@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Navbar></Navbar>
+    <PostCard :data="post"></PostCard>
+    <AddPost @addNewPost="newPostData"></AddPost>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "./assets/tailwind.css";
+import Navbar from "./components/Navbar.vue";
+import AddPost from "./components/AddPost.vue";
+import PostCard from "./components/PostCard.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { Navbar, AddPost, PostCard },
+  data() {
+    return {
+      post: {},
+    };
+  },
+  methods: {
+    newPostData(value) {
+      console.log(value);
+      this.post = value;
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  background-color: rgb(38 39 38);
 }
 </style>
